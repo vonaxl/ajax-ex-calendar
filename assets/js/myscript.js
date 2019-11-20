@@ -4,10 +4,11 @@ function generateDays (){
     // salviamo in una variabile i tot giorni di un mese che abbiamo indicato nel moment seguendo la regola imposta 'DD/MM/YYYY'
     var numeriGG = moment('01/01/2018','DD/MM/YYYY').daysInMonth()
     console.log(numeriGG);
+    //Eseguo un ciclo per creare ciascun giorno del mese nel mio html
     for (let i = 1; i <= numeriGG; i++) {
         var currentDate = '2018-01-0'+i;
         var currentDay = moment(currentDate).format('DD dddd MMMM YYYY');
-        $('.calendario').append('<div class=giorno data-date="'+currentDate+'">'+currentDay+'</div>')
+        $('.calendario ul').append('<li data-date="'+currentDate+'">'+currentDay+'</li>')
     }
 }
 
@@ -20,7 +21,7 @@ function askFestivita(){
             // per ogni array cerca nel html l'attributo che corrisponde alla z.data e poi cambia il suo colore e aggiungi la festivita
             dati.response.forEach(z => {
                 console.log(z.name, z.date);
-                $('.giorno[data-date="'+z.date+'"]').css('color','red').append(' '+z.name)
+                $('.calendario ul [data-date="'+z.date+'"]').css('color','red').append(' '+z.name)
             });
             
         },
