@@ -17,10 +17,8 @@ function generateDays() {
   }
 }
 function dateSetter() {
-    link =
-    "https://flynn.boolean.careers/exercises/api/holidays?year=2018&month=" + m;
+    link ="https://flynn.boolean.careers/exercises/api/holidays?year=2018&month=" + m;
     $(".calendario ul").html("");
-    
     generateDays();
     askFestivita();
     mese = m+1;
