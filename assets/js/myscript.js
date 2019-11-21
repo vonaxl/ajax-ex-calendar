@@ -1,12 +1,15 @@
 function generateDays() {
   // salviamo in una variabile i tot giorni di un mese che abbiamo indicato nel moment seguendo la regola imposta 'DD/MM/YYYY'
-  var numeriGG = moment("01/01/2018", "DD/MM/YYYY").daysInMonth();
+  var numeriGG = moment("01/01/2018", "DD/MM/YYYY").add(m,'months').daysInMonth();
+  
+  var meseOutput =  moment("01/01/2018", "DD/MM/YYYY").add(m,'months').format("MMMM");
+  console.log(meseOutput);
+  $("#mese").html(meseOutput);
   console.log(numeriGG);
   //Eseguo un ciclo per creare ciascun giorno del mese nel mio html
   for (let i = 1; i <= numeriGG; i++) {
     var currentDate = moment([2018, m, i]).format("YYYY-MM-DD");
     // console.log("TCL: generateDays -> currentDate", currentDate)
-
     var currentDay = moment(currentDate).format("DD dddd");
     $(".calendario ul").append(
       '<li data-date="' + currentDate + '">' + currentDay + "</li>"
@@ -14,15 +17,13 @@ function generateDays() {
   }
 }
 function dateSetter() {
-  var mese = moment(1+m, "MM").format("MMMM");
-  console.log(mese);
-  $("#mese").html(mese);
-  link =
+    link =
     "https://flynn.boolean.careers/exercises/api/holidays?year=2018&month=" + m;
-  $(".calendario ul").html("");
-
-  generateDays();
-  askFestivita();
+    $(".calendario ul").html("");
+    
+    generateDays();
+    askFestivita();
+    mese = m+1;
 }
 
 function askFestivita() {
@@ -47,6 +48,7 @@ function askFestivita() {
 
 $(document).ready(function() {
   m = 0;
+  y = 2018;
   dateSetter();
 
   $("#next").click(function() {
@@ -70,6 +72,12 @@ $(document).ready(function() {
     console.log(m);
     dateSetter(dateSetter);
   });
-
+  $('select').on('change', function () {
+    // salva l'elemento cambiato
+    var xData = $("option:selected", this);
+    var month=xData.val();
+    m=month;
+    dateSetter(dateSetter);
+    });
 
 });
