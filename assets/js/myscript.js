@@ -23,7 +23,7 @@ function askFestivita(){
             // per ogni elemento dentro l'array cerca nel html l'attributo che corrisponde alla z.data e poi cambia il suo colore e aggiungi la festivita
             dati.response.forEach(z => {
                 console.log(z.name, z.date);
-                $('.calendario ul [data-date="'+z.date+'"]').css('color','red').append('- '+z.name)
+                $('.calendario ul [data-date="'+z.date+'"]').css('color','red').append(' - '+z.name)
             });
             
         },
