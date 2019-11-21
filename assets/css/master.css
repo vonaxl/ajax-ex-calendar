@@ -22,4 +22,5 @@ li{
 }
 ul li:nth-child(7n+1) {  
   background-color: rgb(255, 230, 230);
+  color: black;
 }
