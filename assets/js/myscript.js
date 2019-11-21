@@ -6,8 +6,10 @@ function generateDays (){
     console.log(numeriGG);
     //Eseguo un ciclo per creare ciascun giorno del mese nel mio html
     for (let i = 1; i <= numeriGG; i++) {
-        var currentDate = '2018-01-0'+i;
-        var currentDay = moment(currentDate).format('DD dddd MMMM YYYY');
+        var currentDate = moment('2018-01-'+i, 'YYYY-MM-D').format('YYYY-MM-DD');
+        console.log("TCL: generateDays -> currentDate", currentDate)
+        
+        var currentDay = moment(currentDate).format('DD dddd');
         $('.calendario ul').append('<li data-date="'+currentDate+'">'+currentDay+'</li>')
     }
 }
@@ -18,10 +20,10 @@ function askFestivita(){
         method: "GET",
         success: function(dati) {
             console.log(dati);
-            // per ogni array cerca nel html l'attributo che corrisponde alla z.data e poi cambia il suo colore e aggiungi la festivita
+            // per ogni elemento dentro l'array cerca nel html l'attributo che corrisponde alla z.data e poi cambia il suo colore e aggiungi la festivita
             dati.response.forEach(z => {
                 console.log(z.name, z.date);
-                $('.calendario ul [data-date="'+z.date+'"]').css('color','red').append(' '+z.name)
+                $('.calendario ul [data-date="'+z.date+'"]').css('color','red').append('- '+z.name)
             });
             
         },
