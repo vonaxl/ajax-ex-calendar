@@ -1,3 +1,22 @@
 .pads{
-  padding: 4rem 0;
+  padding: 1rem 0;
+}
+
+ul {
+  width: 700px;
+}
+li{
+  float: left;
+  font-size: 0.8em;
+  width: 100px;
+  height: 100px;
+  border: dotted 1px black;
+  padding: 10px;
+}
+.festa{
+  background: red;
+  color: white;
+}
+.btn{
+  width: 100px;
 }
